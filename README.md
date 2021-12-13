@@ -56,7 +56,6 @@ calculate the Adjusted Rand Index
 ```
 library(clues)
 adjustedRand(result1$clusters,example1.member)
-
 ```
 ## 3. Examples and reproducible results 
 
@@ -72,7 +71,7 @@ for ( i in 1:length(files)){
     names(opt[[count]]) <- paste0('opt_',strsplit(strsplit(i,'_')[[1]][4],'results')[[1]][1])}
 ```
 
-# identify the result with least BIC value
+Identify the result with least BIC value
 ```
 bics <- sapply(1:length(opt),function(i){ f.opt <- opt[[i]][[1]]$BIC })
 optimal <- grep(min(bics),bics)
