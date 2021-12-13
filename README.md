@@ -59,24 +59,22 @@ adjustedRand(result1$clusters,example1.member)
 
 ```
 ## 3. Examples and reproducible results 
-can be found using the example.R script
 
+Examples can be found using the example.R script
 
-## 4 Identify the optimal co-regulation programs with least BIC value
+Identify the optimal co-regulation programs with least BIC value
 ```
-files <- list.files(path=path1, pattern='results.RData')
+files <- list.files(path=path1, pattern='results.RDS')
 
-count <- 0
-resA <- vector('list')
-for ( i in files){
-    load(i)
-    count <- count +1
-    resA[[count]] <-  results
-    names(resA[[count]]) <- paste0('res_',strsplit(strsplit(i,'_')[[1]][4],'results')[[1]][1])}
+opt <- vector('list')
+for ( i in 1:length(files)){
+    opt[[i]] <- readRDS(files[i])
+    names(opt[[count]]) <- paste0('opt_',strsplit(strsplit(i,'_')[[1]][4],'results')[[1]][1])}
 ```
 
 # identify the result with least BIC value
 ```
-bicS <- lapply(1:length(resA),function(i){ Res <- resA[[i]][[1]]$BIC })
-optimal.lambda <- grep(min(unlist(bicS)),unlist(bicS))
+bics <- sapply(1:length(opt),function(i){ f.opt <- opt[[i]][[1]]$BIC })
+optimal <- grep(min(bics),bics)
+
 ```
