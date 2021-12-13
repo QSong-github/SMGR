@@ -18,7 +18,29 @@ SMGR works with single-cell RNA-seq dataset and single-cell ATAC-seq datasets as
 
 ## 2.2 input data list with scRNA-seq and scATAC-seq datasets
 ```
+
+SMGR works with a list of scRNA-seq and scATAC-seq dataset as inputs. Bascially, the format of data input is as follows. Example data files can be found in the ```Data``` folder.
+
+For scRNA-seq data:
+
+| CellID | rna-cell1 | rna-cell2 | rna-cell3 | rna-cell4 | ... |
+|----|--------|--------|--------|---------|-----|
+| Gene1 | 0 | 1 | 0 | 0 | ... |
+| Gene2 | 0 | 0 | 1 | 0 | ... |
+| Gene3 | 0 | 0| 1 | 0  | ... |
+|...    |...|...|...|...|...|
+
+For scATAC-seq data:
+
+| CellID | atac-cell1 | atac-cell2 | atac-cell3 | atac-cell4 | ... |
+|----|--------|--------|--------|---------|-----|
+| Peak1 | 1 | 0 | 0 | 0 | ... |
+| Peak2 | 1 | 0 | 1 | 0 | ... |
+| Peak3 | 0 | 0| 0 | 0  | ... |
+|...    |...|...|...|...|...|
+
 #' load the example data
+```
 data("data1")
 ```
 data1 is the data list of scRNA-seq and scATAC-seq data
@@ -29,3 +51,36 @@ result1 <- smgr_main(sm.data = data1, K=3, N=nrow(data1[[1]]))
 
 ```
 result1 contains the latent representation of joint scRNA-seq and scATAC-seq data
+
+## 2.4 evaluate of clustering results using ground truth (this is optional)
+```
+# calculate the Adjusted Rand Index
+
+library(clues)
+adjustedRand(result1$clusters,example1.member)
+```
+
+## 3. Examples and reproducible results 
+can be found using the example.R script
+
+
+## 4 Identify the optimal co-regulation programs with least BIC value
+
+```
+files <- list.files(path=path1, pattern='results.RData')
+
+count <- 0
+resA <- vector('list')
+for ( i in files){
+    load(i)
+    count <- count +1
+    resA[[count]] <-  results
+    names(resA[[count]]) <- paste0('res_',strsplit(strsplit(i,'_')[[1]][4],'results')[[1]][1])}
+
+
+# identify the result with least BIC value
+
+bicS <- lapply(1:length(resA),function(i){ Res <- resA[[i]][[1]]$BIC })
+optimal.lambda <- grep(min(unlist(bicS)),unlist(bicS))
+
+```
