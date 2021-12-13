@@ -24,6 +24,35 @@ transform <- function(data, len, R, type){
     }
 }
 
+
+#' @title calculate the BIc value
+#' @description calculate bic
+#' @details calculate the BIc value to seletct the best latent variables
+#' @param xi
+#' @return the BIC value
+#' @export  BICs function
+
+BICs <- function(xi, beta, th, mu, update){
+  BIC = 0
+  all.ll <- sum(unlist(lapply(1:nrow(xi),function(i){
+    loglik(th,mu[i,],y=xi[i,])})))
+  BIC = BIC - 2*all.ll + (sum(beta!=0))*log(nrow(xi)*ncol(xi))
+  return (BIC)}
+
+#' @title calculate the loglikehood
+#' @description loglikehood
+#' @details calculate the loglikehood based on the negative binomial distribution
+#' @param th theta in the negative binomial distribution
+#' @param mu mu in the negative binomial distribution
+#' @return A numeric vector of log density.
+#' @export  posterior likelihood
+
+loglik <- function(th, mu, y){
+  sum(lgamma(th + y) - lgamma(th) - lgamma(y + 1) + th * log(th) +
+        y * log(mu + (y == 0)) - (th + y) * log(th + mu))
+}
+
+
 #' @title Gibbs sampling for identifying latent representation
 #' @param mean_x A non-negative integer. or vector
 #' @return updated latent representation
@@ -79,32 +108,3 @@ update_Ys <- function(mean_x,
                   }
               ))
   return (temp)}
-
-#' @title calculate the BIc value
-#' @description calculate bic
-#' @details calculate the BIc value to seletct the best latent variables
-#' @param xi
-#' @return the BIC value
-#' @export  BICs function
-
-BICs <- function(xi, beta, th, mu, update){
-  BIC = 0
-  all.ll <- sum(unlist(lapply(1:nrow(xi),function(i){
-    loglik(th,mu[i,],y=xi[i,])})))
-  BIC = BIC - 2*all.ll + (sum(beta!=0))*log(nrow(xi)*ncol(xi))
-  return (BIC)}
-
-#' @title calculate the loglikehood
-#' @description loglikehood
-#' @details calculate the loglikehood based on the negative binomial distribution
-#' @param th theta in the negative binomial distribution
-#' @param mu mu in the negative binomial distribution
-#' @return A numeric vector of log density.
-#' @export  posterior likelihood
-
-loglik <- function(th, mu, y){
-  sum(lgamma(th + y) - lgamma(th) - lgamma(y + 1) + th * log(th) +
-        y * log(mu + (y == 0)) - (th + y) * log(th + mu))
-}
-
-
