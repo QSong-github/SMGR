@@ -126,10 +126,10 @@ smgr_main <- function(sm.data, K, R, n_burnin=200, n_draw=200, n_iter=20, option
         }
     }
 
-    #kmeans.fit = kmeans(update_Y, K, nstart=100)
-    #clusters = kmeans.fit$cluster
-    #centers = kmeans.fit$centers
-
+    # kmeans.fit = kmeans(update_Y, K, nstart=100)
+    # clusters = kmeans.fit$cluster
+    # centers = kmeans.fit$centers
+    
     totalBic <- sum(unlist(
         lapply(estimates, function(dx)
         {
