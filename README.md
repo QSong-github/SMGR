@@ -45,20 +45,19 @@ data("data1")
 data1 is the data list of scRNA-seq and scATAC-seq data
 
 ## 2.3 run main function of the example data
-
+```
 result1 <- smgr_main(sm.data = data1, K=3, N=nrow(data1[[1]]))
 ```
 result1 contains the latent representation of joint scRNA-seq and scATAC-seq data
 
 ## 2.4 evaluate of clustering results using ground truth (this is optional)
-```
-# calculate the Adjusted Rand Index
 
+calculate the Adjusted Rand Index
+```
 library(clues)
 adjustedRand(result1$clusters,example1.member)
 
 ```
-
 ## 3. Examples and reproducible results 
 can be found using the example.R script
 
@@ -74,10 +73,10 @@ for ( i in files){
     count <- count +1
     resA[[count]] <-  results
     names(resA[[count]]) <- paste0('res_',strsplit(strsplit(i,'_')[[1]][4],'results')[[1]][1])}
-
+```
 
 # identify the result with least BIC value
-
+```
 bicS <- lapply(1:length(resA),function(i){ Res <- resA[[i]][[1]]$BIC })
 optimal.lambda <- grep(min(unlist(bicS)),unlist(bicS))
-
+```
