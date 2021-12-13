@@ -17,7 +17,6 @@ library(SMGR)
 SMGR works with single-cell RNA-seq dataset and single-cell ATAC-seq datasets as inputs. Example data is shown in ```Data``` folder.
 
 ## 2.2 input data list with scRNA-seq and scATAC-seq datasets
-```
 
 SMGR works with a list of scRNA-seq and scATAC-seq dataset as inputs. Bascially, the format of data input is as follows. Example data files can be found in the ```Data``` folder.
 
@@ -49,7 +48,6 @@ data1 is the data list of scRNA-seq and scATAC-seq data
 ```
 result1 <- smgr_main(sm.data = data1, K=3, N=nrow(data1[[1]]))
 
-```
 result1 contains the latent representation of joint scRNA-seq and scATAC-seq data
 
 ## 2.4 evaluate of clustering results using ground truth (this is optional)
@@ -58,6 +56,7 @@ result1 contains the latent representation of joint scRNA-seq and scATAC-seq dat
 
 library(clues)
 adjustedRand(result1$clusters,example1.member)
+
 ```
 
 ## 3. Examples and reproducible results 
