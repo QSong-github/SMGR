@@ -75,5 +75,4 @@ Identify the result with least BIC value
 ```
 bics <- sapply(1:length(opt),function(i){ f.opt <- opt[[i]][[1]]$BIC })
 optimal <- grep(min(bics),bics)
-
 ```
