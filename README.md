@@ -20,8 +20,8 @@ SMGR works with single-cell RNA-seq dataset and single-cell ATAC-seq datasets as
 ```
 #' load the example data
 data("data1")
-
 ```
+data1 is the data list of scRNA-seq and scATAC-seq data
 
 ## 2.3 run main function of the example data
 ```
