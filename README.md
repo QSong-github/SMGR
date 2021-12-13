@@ -45,9 +45,9 @@ data("data1")
 data1 is the data list of scRNA-seq and scATAC-seq data
 
 ## 2.3 run main function of the example data
-```
-result1 <- smgr_main(sm.data = data1, K=3, N=nrow(data1[[1]]))
 
+result1 <- smgr_main(sm.data = data1, K=3, N=nrow(data1[[1]]))
+```
 result1 contains the latent representation of joint scRNA-seq and scATAC-seq data
 
 ## 2.4 evaluate of clustering results using ground truth (this is optional)
@@ -64,7 +64,6 @@ can be found using the example.R script
 
 
 ## 4 Identify the optimal co-regulation programs with least BIC value
-
 ```
 files <- list.files(path=path1, pattern='results.RData')
 
@@ -82,4 +81,3 @@ for ( i in files){
 bicS <- lapply(1:length(resA),function(i){ Res <- resA[[i]][[1]]$BIC })
 optimal.lambda <- grep(min(unlist(bicS)),unlist(bicS))
 
-```
