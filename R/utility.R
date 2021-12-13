@@ -14,8 +14,6 @@
 #' TRUE will take much longer but will use less memory. This can be useful if
 #' you have a very large matrix that cannot fit into memory when converted to
 #' a dense form.
-#' @param verbose Print progress/messages
-#'
 #' @importFrom future nbrOfWorkers
 #' @export feature mapped annotations and activity matrix
 
@@ -27,7 +25,7 @@ GeneActivityMatrix <- function(
                                      upstream = 2000,
                                downstream = 0,
                                keep.sparse = FALSE,
-                               verbose = TRUE
+                               verbose = FALSE
                                ) {
     
     #' convert peak matrix to GRanges object
