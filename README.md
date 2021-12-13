@@ -55,7 +55,7 @@ result1 contains the latent representation of joint scRNA-seq and scATAC-seq dat
 calculate the Adjusted Rand Index
 ```
 library(clues)
-adjustedRand(result1$clusters,example1.member)
+adjustedRand(result1$clusters,data1.member)
 ```
 ## 3. Examples and reproducible results 
 
