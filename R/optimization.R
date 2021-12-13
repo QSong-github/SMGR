@@ -106,3 +106,5 @@ loglik <- function(th, mu, y){
   sum(lgamma(th + y) - lgamma(th) - lgamma(y + 1) + th * log(th) +
         y * log(mu + (y == 0)) - (th + y) * log(th + mu))
 }
+
+
