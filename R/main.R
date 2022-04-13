@@ -63,7 +63,7 @@ smgr_main <- function(sm.data, K, R, n_burnin=200, n_draw=200, n_iter=20, option
                 estimate_i <- mclapply(1:ncol(dat$x_i), function(f)
                 {
                     datas <- data.frame(update_Y,y=dat$x_i[,f]);
-                    nb_reg <- glmregNB(y ~ ., data=datas, family='negbin', penalty="enet", alpha=1, thresh=1e-4, standardize=FALSE);
+                    nb_reg <- glmregNB(y ~ ., data=datas, family='negbin', penalty="enet", alpha=1, thresh=1e-4, standardize=FALSE, parallel=FALSE);
                     min_bic <- which.min(BIC(nb_reg));
                     temp <- list(nb_coef = as.matrix(coef(nb_reg, min_bic)),
                                  nb_th = nb_reg$theta[min_bic],
