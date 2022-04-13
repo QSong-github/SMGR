@@ -98,7 +98,7 @@ smgr_main <- function(sm.data, K, R, n_burnin=200, n_draw=200, n_iter=20, option
             dat$mu <- do.call(cbind, map(estimate_i, 3))
             dat$b0 <- dat$coef[1,]; dat$b1 <- t(dat$coef[-1,])
             return (dat)
-        })    }
+        })    
 
         tmp_update <- tryCatch(
         {
@@ -126,6 +126,7 @@ smgr_main <- function(sm.data, K, R, n_burnin=200, n_draw=200, n_iter=20, option
             stop("Errors occur during optimization")
         } else {
             update_Y <- tmp_update
+        }
         }
 
 
