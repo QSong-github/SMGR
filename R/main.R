@@ -32,8 +32,11 @@ smgr_main <- function(sm.data, K, R, n_burnin=200, n_draw=200, n_iter=20, option
     cat("## ----------------------------------------------------------------------------\n")
 
     len <- length(sm.data)
-    sm.datas <- transform(sm.data, len, R, type)
-
+    
+    if (type !='simulate'){ 
+        sm.datas <- transform(sm.data, len, R, type) 
+    } else { sm.datas <- sm.data }
+    
     if (len==2){
         cat("## |            scRNA-seq data and scATAC-seq data identified ....                |\n")
     } else if (len<2){
@@ -95,7 +98,7 @@ smgr_main <- function(sm.data, K, R, n_burnin=200, n_draw=200, n_iter=20, option
             dat$mu <- do.call(cbind, map(estimate_i, 3))
             dat$b0 <- dat$coef[1,]; dat$b1 <- t(dat$coef[-1,])
             return (dat)
-        })
+        })    }
 
         tmp_update <- tryCatch(
         {
@@ -124,7 +127,7 @@ smgr_main <- function(sm.data, K, R, n_burnin=200, n_draw=200, n_iter=20, option
         } else {
             update_Y <- tmp_update
         }
-    }
+
 
     # kmeans.fit = kmeans(update_Y, K, nstart=100)
     # clusters = kmeans.fit$cluster
