@@ -1,4 +1,21 @@
 
+#' @title calculate the Dunn index and Sihouette index
+#' @param mat input data
+#' @param cluster identified programs
+#' @export evaluation metrics
+Evaluate <- function(mat,cluster){
+    if (sum(is.na(rownames(mat)))>0){
+        ps <- which(is.na(rownames(mat)))
+        mat <- mat[-ps,]
+        cluster <- cluster[-ps]}
+    Dist1 <- dist(mat, method = "euclidean")
+    Dist2 <- as.dist(1 - cor(t(mat)))
+    out <- t(data.frame(Dunn = dunn(Dist1,cluster),
+                        Sihouette = mean(silhouette(cluster, dmatrix=as.matrix(Dist1))[,3])))
+                                                    
+    return(out)}
+
+
 #' @title Gibbs sampling for identifying latent representation
 #' @param mean_x A non-negative integer. or vector
 #' @return updated latent representation
