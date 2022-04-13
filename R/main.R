@@ -33,9 +33,7 @@ smgr_main <- function(sm.data, K, R, n_burnin=200, n_draw=200, n_iter=20, option
 
     len <- length(sm.data)
     
-    if (type !='simulate'){ 
-        sm.datas <- transform(sm.data, len, R, type) 
-    } else { sm.datas <- sm.data }
+    sm.datas <- transform(sm.data, len, R, type) 
     
     if (len==2){
         cat("## |            scRNA-seq data and scATAC-seq data identified ....                |\n")
@@ -52,7 +50,10 @@ smgr_main <- function(sm.data, K, R, n_burnin=200, n_draw=200, n_iter=20, option
     while (iter < n_iter)
     {
         iter = iter + 1
-
+        
+  if (iter<10){term <- paste0('iter= ',iter)}else {term <- paste0('iter=',iter)}
+           cat(paste0('## |                               ',term,'.....                                |\n'))
+            
         estimates <- lapply(sm.datas, function(dat){
 
             beta0 <- dat$b_0; beta1 <- dat$b_1
