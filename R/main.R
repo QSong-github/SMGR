@@ -60,7 +60,7 @@ smgr_main <- function(sm.data, K, R, n_burnin=200, n_draw=200, n_iter=20, option
 
             if (option=='nb'){
 
-                estimate_i <- lapply(1:ncol(dat$x_i), function(f)
+                estimate_i <- mclapply(1:ncol(dat$x_i), function(f)
                 {
                     datas <- data.frame(update_Y,y=dat$x_i[,f]);
                     nb_reg <- glmregNB(y ~ ., data=datas, family='negbin', penalty="enet", alpha=1, thresh=1e-4, standardize=FALSE);
@@ -69,19 +69,18 @@ smgr_main <- function(sm.data, K, R, n_burnin=200, n_draw=200, n_iter=20, option
                                  nb_th = nb_reg$theta[min_bic],
                                  nb_mu = nb_reg$fitted.values[,min_bic])
 
-                    return(temp)
-                })
+                    return(temp)}, mc.cores = detectCores(), mc.preschedule=FALSE,mc.set.seed=FALSE)
 
             } else if (option=='zinb'){
 
-                estimate_i <- lapply(1:ncol(dat$x_i), function(f)
+                estimate_i <- mclapply(1:ncol(dat$x_i), function(f)
                 {
                     datas <- data.frame(update_Y,y=dat$x_i[,f]);
 
-                    tmp <- lapply(1:(ncol(datas)-1),function(l){
+                    tmp <- mclapply(1:(ncol(datas)-1),function(l){
                         m1 <- zeroinfl(y ~ ., dist = 'negbin',
                                        data = datas[,c(l,ncol(datas),drop=FALSE)])
-                        return(m1)})
+                        return(m1)}, mc.cores = detectCores(), mc.preschedule=FALSE,mc.set.seed=FALSE)
 
                     incept1 <- mean(sapply(tmp,function(m1){coef(m1)[1]}))
                     incept2 <- as.numeric(sapply(tmp,function(m1){coef(m1)[2]}))
@@ -92,7 +91,7 @@ smgr_main <- function(sm.data, K, R, n_burnin=200, n_draw=200, n_iter=20, option
                                  zinb_th = zinb.th,
                                  zinb_mu = zinb.mu)
                     return(temp)
-                })
+                }, mc.cores = detectCores(), mc.preschedule=FALSE,mc.set.seed=FALSE)
             }
             dat$coef <- do.call(cbind, map(estimate_i, 1))
             dat$th <- do.call(cbind, map(estimate_i, 2))
