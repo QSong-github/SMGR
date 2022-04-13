@@ -24,7 +24,7 @@ ipak <- function(pkg){
 #' @export smgr_main function
 
 smgr_main <- function(sm.data, K, R, n_burnin=200, n_draw=200, n_iter=20, option='nb',
-                      type='simulate', BIC=FALSE)
+                      type='simulate', output = 'latent')
 {
 
     cat("## ============================================================================\n")
@@ -134,7 +134,7 @@ smgr_main <- function(sm.data, K, R, n_burnin=200, n_draw=200, n_iter=20, option
         }
 
 
-    kmeans.fit = kmeans(update_Y, K, nstart=100)
+    kmeans.fit = kmeans(update_Y, R, nstart=100)
     Yclusters = kmeans.fit$cluster
 
     if (output =='all'){
