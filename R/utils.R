@@ -30,7 +30,7 @@ update_Ys <- function(mean_x,
     }
 
   temp <- do.call(rbind,
-                  lapply(1:k,function(t)
+                  mclapply(1:k,function(t)
                   {
                       .C("gibbs", meanz = as.double(mean_x[t,]),
                          lastz = as.double(update_y[t,]),
@@ -51,8 +51,8 @@ update_Ys <- function(mean_x,
                          as.integer(r),
                          as.double(sdev),
                          as.integer(n),PACKAGE = 'SMGR')[[1]]
-                  }
-              ))
+                  }, mc.cores = detectCores(), mc.preschedule = FALSE, mc.set.seed = FALSE))
+
   return (temp)}
 
 #' @title calculate the BIc value
