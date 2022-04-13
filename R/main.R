@@ -24,7 +24,7 @@ ipak <- function(pkg){
 #' @export smgr_main function
 
 smgr_main <- function(sm.data, K, R, n_burnin=200, n_draw=200, n_iter=20, option='nb',
-                      type='simulate', packages = c('glmnet','MASS','purrr','mpath','zic','pscl'))
+                      type='simulate', packages = c('glmnet','MASS','purrr','mpath','zic','pscl','parallel'))
 {
     ipak(packages)
     cat("## ============================================================================\n")
