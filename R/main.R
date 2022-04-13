@@ -36,7 +36,7 @@ smgr_main <- function(sm.data, K, R, n_burnin=200, n_draw=200, n_iter=20, option
     sm.datas <- transform(sm.data, len, R, type) 
     
     if (len==2){
-        cat("## |            scRNA-seq data and scATAC-seq data identified ....                |\n")
+        cat("## |            scRNA-seq data and scATAC-seq data identified ....              |\n")
     } else if (len<2){
           cat("## |               single-cell multi-omics data is not identified ....       |\n")}
 
