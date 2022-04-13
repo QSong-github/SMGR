@@ -23,7 +23,7 @@ ipak <- function(pkg){
 #' @return latent representation; co-regulation clusters; BIC values
 #' @export smgr_main function
 
-smgr_main1 <- function(sm.data, K, R, n_burnin=200, n_draw=200, n_iter=20, option='nb',
+smgr_main <- function(sm.data, K, R, n_burnin=200, n_draw=200, n_iter=20, option='nb',
                       type='simulate', BIC=FALSE)
 {
 
