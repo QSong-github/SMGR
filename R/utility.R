@@ -17,7 +17,7 @@
 #' @importFrom future nbrOfWorkers
 #' @export feature mapped annotations and activity matrix
 
-GeneActivityMatrix <- function(
+linkActivityMatrix <- function(
                                peak.matrix,
                                annotation.file,
                                seq.levels = c(1:22, "X", "Y"),
