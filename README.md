@@ -2,7 +2,7 @@
 
 A tailored tool for identifying coherent signals across single-cell multi-omics data. 
 
-Unravelling the regulatory programs from single-cell multi-omics data has long been one of the major challenges in genomics, especially in the current emerging single-cell field. Currently there is a huge gap between fast-growing single-cell multi-omics data and effective methods for the integrative analysis of these inherent sparse and heterogeneous data. Here we proposed SMGR to detect coherent functional regulatory signals and target genes from the joint single-cell RNA-sequencing (scRNA-seq) and single-cell assay for transposase-accessible chromatin using sequencing (scATAC-seq) data obtained from different samples. SMGR enables the identification of co-regulatory programs and the elucidation of regulating mechanisms. 
+<p style='text-align: justify;'> Unravelling the regulatory programs from single-cell multi-omics data has long been one of the major challenges in genomics, especially in the current emerging single-cell field. Currently there is a huge gap between fast-growing single-cell multi-omics data and effective methods for the integrative analysis of these inherent sparse and heterogeneous data. Here we proposed SMGR to detect coherent functional regulatory signals and target genes from the joint single-cell RNA-sequencing (scRNA-seq) and single-cell assay for transposase-accessible chromatin using sequencing (scATAC-seq) data obtained from different samples. SMGR enables the identification of co-regulatory programs and the elucidation of regulating mechanisms. </p>
 
 ## Installation
 ```
@@ -10,8 +10,6 @@ devtools::install_github("QSong-github/SMGR")
 ```
 
 ## How to use
-
-SMGR works with single-cell RNA-seq dataset and single-cell ATAC-seq datasets as inputs. Example data is shown in ```Data``` folder.
 
 SMGR tutorial provides examples and explanations of its functions and how to use them. This documentation introduces the main features of SMGR.
 * [SMGR tutorial](https://github.com/QSong-github/SMGR/blob/main/vignette/vignette_make.html)
@@ -57,4 +55,4 @@ result1 <- smgr_main(sm.data = input_data, K=nrow(input_data[[1]]))
 ```
 result1 contains the latent representation of joint scRNA-seq and scATAC-seq data
 
-For details, please refer to [SMGR tutorial](https://github.com/QSong-github/SMGR/blob/main/vignette/vignette_make.html)
+For details, please refer to [SMGR tutorial](https://github.com/QSong-github/SMGR/blob/main/vignette/vignette_make.html).
