@@ -13,11 +13,10 @@ SMGR works with single-cell RNA-seq dataset and single-cell ATAC-seq datasets as
 
 SMGR tutorial provides examples and explanations of its functions and how to use them. This documentation introduces the main features of SMGR.
 * [SMGR tutorial](https://github.com/QSong-github/SMGR/blob/main/vignette/vignette_make.html)
-*
+
 ## load SMGR package
 ```
 library(SMGR)
-
 ```
 ## input data: a list of scRNA-seq data and scATAC-seq data
 
@@ -56,4 +55,4 @@ result1 <- smgr_main(sm.data = input_data, K=nrow(input_data[[1]]))
 ```
 result1 contains the latent representation of joint scRNA-seq and scATAC-seq data
 
-## For details, please refer to * [SMGR tutorial](https://github.com/QSong-github/SMGR/blob/main/vignette/vignette_make.html)
+For details, please refer to * [SMGR tutorial](https://github.com/QSong-github/SMGR/blob/main/vignette/vignette_make.html)
