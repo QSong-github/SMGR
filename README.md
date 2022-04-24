@@ -16,6 +16,9 @@ library(SMGR)
 ```
 SMGR works with single-cell RNA-seq dataset and single-cell ATAC-seq datasets as inputs. Example data is shown in ```Data``` folder.
 
+SMGR tutorial provides examples and explanations of its functions and how to use them. This documentation introduces the main features of SMGR.
+* [SMGR tutorial](https://github.com/QSong-github/SMGR/blob/main/vignette/vignette_make.html)
+
 ## 2.2 input data list with scRNA-seq and scATAC-seq datasets
 
 SMGR works with a list of scRNA-seq and scATAC-seq dataset as inputs. Bascially, the format of data input is as follows. Example data files can be found in the ```Data``` folder.
