@@ -2,26 +2,26 @@
 
 A tailored tool for identifying coherent signals and co-regulators across single-cell multi-omics data
 
-# 1. Installation
+## Installation
 ```
 devtools::install_github("QSong-github/SMGR")
 ```
 
-# 2. How to use
+## How to use
 
-## 2.1 load SMGR package
-```
-library(SMGR)
-
-```
 SMGR works with single-cell RNA-seq dataset and single-cell ATAC-seq datasets as inputs. Example data is shown in ```Data``` folder.
 
 SMGR tutorial provides examples and explanations of its functions and how to use them. This documentation introduces the main features of SMGR.
 * [SMGR tutorial](https://github.com/QSong-github/SMGR/blob/main/vignette/vignette_make.html)
+*
+## load SMGR package
+```
+library(SMGR)
 
-## 2.2 input data list with scRNA-seq and scATAC-seq datasets
+```
+## input data: a list of scRNA-seq data and scATAC-seq data
 
-SMGR works with a list of scRNA-seq and scATAC-seq dataset as inputs. Bascially, the format of data input is as follows. Example data files can be found in the ```Data``` folder.
+SMGR works with a list of scRNA-seq and scATAC-seq dataset as inputs. Bascially, the format of data input is as follows. Example data files can be found in the ```data``` folder.
 
 For scRNA-seq data:
 
@@ -41,41 +41,19 @@ For scATAC-seq data:
 | Peak3 | 0 | 0| 0 | 0  | ... |
 |...    |...|...|...|...|...|
 
-#' load the example data
+Load the example data
 ```
-data("data1")
+rna.cts <- readRDS('./data/simuation_scRNA-seq.RDS')
+atac.cts <- readRDS(file='./data/simuation_scATAC-seq.RDS')
+input_data <- list(rna.cts, atac.cts)
 ```
-data1 is the data list of scRNA-seq and scATAC-seq data
+## SMGR process
 
-## 2.3 run main function of the example data
+Input data is a list of scRNA-seq and scATAC-seq data
+
 ```
-result1 <- smgr_main(sm.data = data1, K=3, N=nrow(data1[[1]]))
+result1 <- smgr_main(sm.data = input_data, K=nrow(input_data[[1]]))
 ```
 result1 contains the latent representation of joint scRNA-seq and scATAC-seq data
 
-## 2.4 evaluate of clustering results using ground truth (this is optional)
-
-calculate the Adjusted Rand Index
-```
-library(clues)
-adjustedRand(result1$clusters,data1.member)
-```
-## 3. Examples and reproducible results 
-
-Examples can be found using the example.R script
-
-Identify the optimal co-regulation programs with least BIC value
-```
-files <- list.files(path=path1, pattern='results.RDS')
-
-opt <- vector('list')
-for ( i in 1:length(files)){
-    opt[[i]] <- readRDS(files[i])
-    names(opt[[count]]) <- paste0('opt_',strsplit(strsplit(i,'_')[[1]][4],'results')[[1]][1])}
-```
-
-Identify the result with least BIC value
-```
-bics <- sapply(1:length(opt),function(i){ f.opt <- opt[[i]][[1]]$BIC })
-optimal <- grep(min(bics),bics)
-```
+## For details, please refer to * [SMGR tutorial](https://github.com/QSong-github/SMGR/blob/main/vignette/vignette_make.html)
