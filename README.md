@@ -2,7 +2,7 @@
 
 A tailored tool for identifying coherent signals across single-cell multi-omics data. 
 
-<div style="text-align: justify"> Unravelling the regulatory programs from single-cell multi-omics data has long been one of the major challenges in genomics, especially in the current emerging single-cell field. Currently there is a huge gap between fast-growing single-cell multi-omics data and effective methods for the integrative analysis of these inherent sparse and heterogeneous data. Here we proposed SMGR to detect coherent functional regulatory signals and target genes from the joint single-cell RNA-sequencing (scRNA-seq) and single-cell assay for transposase-accessible chromatin using sequencing (scATAC-seq) data obtained from different samples. SMGR enables the identification of co-regulatory programs and the elucidation of regulating mechanisms. </div>
+Unravelling the regulatory programs from single-cell multi-omics data has been one of the major challenges, especially in the current emerging single-cell field. Currently there is a gap between fast-growing single-cell multi-omics data and effective methods for the integrative analysis of these inherent sparse and heterogeneous data. Here we proposed SMGR to detect coherent functional regulatory signals and target genes from the joint scRNA-seq and scATAC-seq data obtained from different samples. SMGR enables the identification of co-regulatory programs and the elucidation of regulating mechanisms.
 
 ## Installation
 ```
