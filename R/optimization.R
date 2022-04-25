@@ -53,8 +53,8 @@ loglik <- function(th, mu, y){
 }
 
 
-#' @title Gibbs sampling for identifying latent representation
-#' @param mean_x A non-negative integer. or vector
+#' @title mcmc sampling for identifying latent representation
+#' @param mean_x A non-negative integer or vector
 #' @return updated latent representation
 #' @export  update_Ys function
 update_Ys <- function(mean_x,
