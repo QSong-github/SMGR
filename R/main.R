@@ -2,14 +2,14 @@
 #' @title SMGR main function
 #' @description extract co-regulation genes across single-cell multi-omics data
 #' @param sm.data consists of single-cell RNA-seq data and single-cell ATAC-seq data in the format of matrix. Columns represent cells and rows represent genes (scATAC-seq input has been converted to gene-based data matrix)
-#' @param K The number of co-regulation clusters in the single-cell multi-omics data
-#' @param R the number of rows in the data matrix
-#' @param n_burnin burnin for gibbs sampling
-#' @param n_draw drawing for gibbs sampling
+#' @param K The number of features of the input data
+#' @param R the dimension of latent representation 
+#' @param n_burnin burnin for mcmc sampling
+#' @param n_draw drawing for mcmc sampling
 #' @param n_iter number of iterations
 #' @param option nb or zinb
 #' @param type simulate or experimental data
-#' @return latent representation; co-regulation clusters; BIC values
+#' @return latent representation; co-regulation programs
 #' @export smgr_main function
 
 smgr_main <- function(sm.data, K, R = 3, n_burnin=200, n_draw=200, n_iter=20, option='nb',
