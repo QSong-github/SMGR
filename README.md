@@ -55,4 +55,4 @@ result1 <- smgr_main(sm.data = input_data, K=nrow(input_data[[1]]))
 ```
 result1 contains the latent representation of joint scRNA-seq and scATAC-seq data
 
-For details, please refer to [SMGR tutorial](https://github.com/QSong-github/SMGR/blob/main/vignette/vignette.pdf).
+For details, please refer to [SMGR tutorial](https://github.com/QSong-github/SMGR/blob/main/vignette/Vignette.pdf).
