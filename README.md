@@ -12,7 +12,7 @@ devtools::install_github("QSong-github/SMGR")
 ## How to use
 
 SMGR tutorial provides examples and explanations of its functions and how to use them. This documentation introduces the main features of SMGR.
-- [SMGR tutorial](https://github.com/QSong-github/SMGR/blob/main/vignette/vignette_make-copy.pdf)
+- [SMGR tutorial](https://github.com/QSong-github/SMGR/blob/main/vignette/Vignette.pdf)
 
 ## load SMGR package
 ```
