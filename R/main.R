@@ -37,7 +37,7 @@ smgr_main <- function(sm.data, K, R = 3, n_burnin=200, n_draw=200, n_iter=20, op
           cat("## |               single-cell multi-omics data is not identified ....       |\n")}
 
     cat("## |                           Set initial values ....                         |\n")
-    mean_X = matrix(0, nrow = K, ncol = R)
+    mean_X = matrix(0, nrow = K, ncol = R); dif = 0.1
     init_Y <- matrix(rnorm(K*R,0,1), nrow = K, ncol = R)
     update_Y <- init_Y
 
@@ -53,7 +53,7 @@ smgr_main <- function(sm.data, K, R = 3, n_burnin=200, n_draw=200, n_iter=20, op
         if (option=='zinb'){
 
             estimates <- mclapply(sm.datas, function(dat){
-                beta0 <- dat$b_0; beta1 <- dat$b_1
+                beta0 <- dat$b0; beta1 <- dat$b1
 
                 estimate_i <- mclapply(1:ncol(dat$x_i), function(f)
                 {
@@ -84,7 +84,7 @@ smgr_main <- function(sm.data, K, R = 3, n_burnin=200, n_draw=200, n_iter=20, op
             }, mc.cores = detectCores(), mc.preschedule=FALSE,mc.set.seed=FALSE)
             }
         estimates <- mclapply(sm.datas, function(dat){
-            beta0 <- dat$b_0; beta1 <- dat$b_1
+            beta0 <- dat$b0; beta1 <- dat$b1
             estimate_i <- mclapply(1:ncol(dat$x_i), function(f)
                 {
                     datas <- data.frame(update_Y,y=dat$x_i[,f]);
