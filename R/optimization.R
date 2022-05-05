@@ -16,7 +16,7 @@ transform <- function(data, len, R, type){
         dat <- lapply(datas,function(x){
             meanx = apply(x, 2, mean);
             B0 = log(meanx); B1=matrix(0, nrow = ncol(x), ncol = R)
-            list(x_i=x, mean_x=meanx, b_0=B0, b_1=B1, p = ncol(x))})
+            list(x_i=x, mean_x=meanx, b0=B0, b1=B1, p = ncol(x))})
 
         return (dat)
     } else{
