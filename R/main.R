@@ -79,11 +79,10 @@ smgr_main <- function(sm.data, K, R = 3, n_burnin=200, n_draw=200, n_iter=20, op
                 dat$th <- do.call(cbind, map(estimate_i, 2))
                 dat$mu <- do.call(cbind, map(estimate_i, 3))
                 dat$b0 <- dat$coef[1,]; dat$b1 <- t(dat$coef[-1,])
-                dat$maxdif = abs(cbind(dx$b0-beta0,dx$b1-beta1))
+                dat$dif = abs(cbind(dx$b0-beta0,dx$b1-beta1))
                 return (dat)
             }, mc.cores = detectCores(), mc.preschedule=FALSE,mc.set.seed=FALSE)
             }
-        dif = dat$maxdif    
         estimates <- mclapply(sm.datas, function(dat){
             beta0 <- dat$b_0; beta1 <- dat$b_1
             estimate_i <- mclapply(1:ncol(dat$x_i), function(f)
