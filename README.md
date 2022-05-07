@@ -12,7 +12,7 @@ devtools::install_github("QSong-github/SMGR")
 ## How to use
 
 SMGR tutorial provides examples and explanations of its functions and how to use them. This documentation introduces the main features of SMGR.
-- [SMGR tutorial](https://github.com/QSong-github/SMGR/blob/main/vignette/Vignette.pdf)
+- [SMGR tutorial](https://github.com/QSong-github/SMGR/blob/main/vignette/SMGR_vignette.pdf)
 
 ## load SMGR package
 ```
@@ -55,4 +55,4 @@ result1 <- smgr_main(sm.data = input_data, K=nrow(input_data[[1]]))
 ```
 result1 contains the latent representation of joint scRNA-seq and scATAC-seq data
 
-For details, please refer to [SMGR tutorial](https://github.com/QSong-github/SMGR/blob/main/vignette/Vignette.pdf).
+For details, please refer to [SMGR tutorial](https://github.com/QSong-github/SMGR/blob/main/vignette/SMGR_vignette.pdf).
