@@ -1,4 +1,4 @@
-# SMGR
+# SMGR: a joint statistical method for integrative analysis of single-cell multi-omics data
 
 A tailored tool for identifying coherent signals across single-cell multi-omics data. 
 
